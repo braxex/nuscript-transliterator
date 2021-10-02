@@ -4,15 +4,15 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import TextField from '@mui/material/TextField'
 // utils
-import { transliterator } from '../utils/transliterator'
+import transliterator from '../utils/transliterator'
 
 const FormInput = ({ title, label, source }) => {
   const [fieldValue, setFieldValue] = useState('')
+  const [response, setResponse] = useState(null)
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log('made it')
-    transliterator(fieldValue, source)
+    setResponse(transliterator(fieldValue, source))
   }
 
   return (
@@ -26,7 +26,6 @@ const FormInput = ({ title, label, source }) => {
           flexDirection: 'row',
           '& > :not(style)': { m: 1, width: '25ch' },
         }}
-        noValidate
         autoComplete="off"
         onSubmit={e => handleSubmit(e)}>
         <TextField
@@ -38,6 +37,7 @@ const FormInput = ({ title, label, source }) => {
         <Button variant="contained" type="submit">
           Transliterate
         </Button>
+        {/* <p>{response}</p> */}
       </Box>
     </>
   )
@@ -48,9 +48,8 @@ const Homepage = () => {
     <div className="container">
       <main>
         <h1 className="title">Nuskript Transliterator</h1>
-        <FormInput title="English to Nuskrîpt" label="English" source="en" />
+        <FormInput title="English to Nuskrîpt" label="English" source="eng" />
         <FormInput title="IPA to Nuskrîpt" label="IPA" source="ipa" />
-        <FormInput title="Nuskrîpt to English" label="Nuskrîpt" source="ns" />
       </main>
 
       <style jsx>{`
