@@ -1,4 +1,4 @@
-export const schwaConsonantMap = {
+export const schwaReplacementMap = {
   b: 'b́',
   d: 'd́',
   f: 'f́',
@@ -25,36 +25,87 @@ export const schwaConsonantMap = {
   ẓ: 'ẓ́',
 }
 
-export const oneToOneMap = {
-  j: 'y',
-  ʃ: 'ṣ',
-  θ: 'þ',
-  x: 'k',
-  ʒ: 'ẓ',
+export const straightReplacementMap = {
   ɑ: 'ô',
   ɒ: 'ô',
   æ: 'â',
   ɛ: 'ê',
+  ɜ: 'ə',
   ɪ: 'î',
   i: 'e',
+  j: 'y',
+  ɔ: 'a',
+  ʃ: 'ṣ',
+  θ: 'þ',
   ʊ: 'ů',
   ʌ: 'û',
-  ɜ: 'ə',
+  x: 'k',
+  ʒ: 'ẓ',
 }
 
 export const digraphMap = {
-  dʒ: 'j',
-  hw: 'w',
-  tʃ: 'ṭ',
-  aɪ: 'i',
-  aʊ: 'å',
-  eɪ: 'a',
-  oʊ: 'o',
-  ɒ̃: 'ô',
-  æ̃: 'ô',
-  ɔɪ: 'ø',
-  ɔr: 'o',
-  ɔ: 'a',
+  a: [
+    {
+      second: 'ɪ',
+      output: 'i',
+    },
+    {
+      second: 'ʊ',
+      output: 'å',
+    },
+  ],
+  ɒ: [
+    {
+      second: '̃',
+      output: 'ô',
+    },
+  ],
+  æ: [
+    {
+      second: '̃',
+      output: 'ô',
+    },
+  ],
+  d: [
+    {
+      second: 'ʒ',
+      output: 'j',
+    },
+  ],
+  e: [
+    {
+      second: 'ɪ',
+      output: 'a',
+    },
+  ],
+  h: [
+    {
+      second: 'w',
+      output: 'w',
+    },
+  ],
+  o: [
+    {
+      second: 'ʊ',
+      output: 'o',
+    },
+  ],
+  ɔ: [
+    {
+      second: 'ɪ',
+      output: 'ø',
+    },
+    {
+      second: 'r',
+      output: 'o',
+    },
+  ],
+  t: [
+    {
+      second: 'ʃ',
+      output: 'ṭ',
+    },
+  ],
 }
 
 export const unchangedChars = [

@@ -8,11 +8,12 @@ import transliterator from '../utils/transliterator'
 
 const FormInput = ({ title, label, source }) => {
   const [fieldValue, setFieldValue] = useState('')
-  const [response, setResponse] = useState(null)
+  const [response, setResponse] = useState('')
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    setResponse(transliterator(fieldValue, source))
+    const test = await transliterator(fieldValue, source)
+    setResponse(test)
   }
 
   return (
@@ -37,7 +38,7 @@ const FormInput = ({ title, label, source }) => {
         <Button variant="contained" type="submit">
           Transliterate
         </Button>
-        {/* <p>{response}</p> */}
+        <p>{response || ''}</p>
       </Box>
     </>
   )

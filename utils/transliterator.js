@@ -1,4 +1,10 @@
-import { disallowedIpaChars, ipaChars } from './sourceTargetMaps'
+import {
+  disallowedIpaChars,
+  ipaChars,
+  digraphMap,
+  straightReplacementMap,
+  schwaReplacementMap,
+} from './sourceTargetMaps'
 
 // remove disallowed characters and lowercase prior to api call
 const formatSourceString = sourceString => {
@@ -23,17 +29,38 @@ const removeDisallowedCharacters = responseArray => {
   return responseArray.filter(i => !disallowedIpaChars.includes(i))
 }
 
-const transliterateToNs = formattedArray => {
-  // TODO: for each character:
-  // TODO: handle digraphs
-  // TODO: handle all 1:1 replacement
-  // TODO: handle schwas
-  // return formattedArray.map(i => ipaToNuskript[i])
+const handleNonSchwaReplacements = (currentChar, currentIndex, array) => {
+  const followingChar = array[currentIndex + 1]
+  // check if current char potentially begins a valid non-schwa digraph
+  const leadCharDigraphOptions = digraphMap[currentChar] || []
+  const foundDigraph = leadCharDigraphOptions.find(el => el.second === followingChar)
+  let mappedChar = null
+  // check if following char completes a valid non-schwa digraph
+  if (foundDigraph) {
+    mappedChar = foundDigraph.output
+    array.splice(followingChar, 1) /* remove next char in array */
+  } else {
+    // if not non-schwa digraph, perform 1:1 replacement
+    mappedChar = straightReplacementMap[currentChar]
+  }
+  return mappedChar || currentChar
 }
 
-//
-//
-//
+const handleSchwaReplacements = (currentChar, currentIndex, array) => {
+  const followingChar = array[currentIndex + 1]
+  let mappedChar = null
+  // check if current char is schwa
+  if (currentChar === 'ə') {
+    // if it is the last character, return apostrophe
+    if (currentIndex === array.length - 1) {
+      mappedChar = "'"
+    } else if (schwaReplacementMap[followingChar]) {
+      mappedChar = schwaReplacementMap[followingChar]
+      array.splice(followingChar, 1) /* remove next char in array */
+    }
+  }
+  return mappedChar || currentChar
+}
 
 const transliterator = async (inputString, source) => {
   const formattedInputString = formatSourceString(inputString)
@@ -43,20 +70,23 @@ const transliterator = async (inputString, source) => {
     // await fetchIpa()
     // sourceText = response
     // responseString = 'api response string'
-  } else responseString = formattedInputString
-
-  console.log('rs:', responseString)
+  } else {
+    responseString = formattedInputString
+  }
 
   const formattedResponseArray = removeDisallowedCharacters(responseString.split(''))
-  console.log('fra:', formattedResponseArray)
 
-  const transliteratedArray = transliterateToNs(formattedResponseArray)
-  console.log('ta:', transliteratedArray)
+  // handle digraph and 1:1 char replacements
+  const preSchwaArray = formattedResponseArray
+    .map(handleNonSchwaReplacements)
+    .filter(i => typeof i !== 'undefined')
 
-  const transliteratedString = transliteratedArray.join('')
-  console.log('ts:', transliteratedString)
+  // handle schwa replacements
+  const finalArray = preSchwaArray
+    .map(handleSchwaReplacements)
+    .filter(i => typeof i !== 'undefined')
 
-  return transliteratedString
+  return finalArray.join('')
 }
 
 export default transliterator
