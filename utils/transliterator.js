@@ -1,4 +1,4 @@
-import { ipaToNuskript, disallowedIpaChars, ipaChars } from './sourceTargetMaps'
+import { disallowedIpaChars, ipaChars } from './sourceTargetMaps'
 
 // remove disallowed characters and lowercase prior to api call
 const formatSourceString = sourceString => {
@@ -11,7 +11,6 @@ const fetchIpa = () => {
   try {
     // make ipa call
     // TODO: if word not found
-
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error)
@@ -25,11 +24,11 @@ const removeDisallowedCharacters = responseArray => {
 }
 
 const transliterateToNs = formattedArray => {
+  // TODO: for each character:
   // TODO: handle digraphs
+  // TODO: handle all 1:1 replacement
   // TODO: handle schwas
-  // TODO: handle those that do not need to be replaced
-  // TODO: handle 1:1 replacement
-  return formattedArray.map(i => ipaToNuskript[i])
+  // return formattedArray.map(i => ipaToNuskript[i])
 }
 
 //

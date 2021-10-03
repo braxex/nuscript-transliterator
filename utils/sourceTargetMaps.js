@@ -1,9 +1,35 @@
-export const ipaToNuskript = {}
+export const schwaConsonantMap = {
+  b: 'b́',
+  d: 'd́',
+  f: 'f́',
+  g: 'ǵ',
+  h: 'h́',
+  j: 'ȷ́',
+  k: 'ḱ',
+  l: 'ĺ',
+  m: 'ḿ',
+  n: 'ń',
+  ŋ: 'ŋ́',
+  p: 'ṕ',
+  r: 'ŕ',
+  s: 'ś',
+  ṣ: 'ṣ́',
+  þ: 'þ́',
+  ð: 'ð́',
+  t: 't́',
+  ṭ: 'ṭ́',
+  v: 'v́',
+  w: 'ẃ',
+  y: 'ý',
+  z: 'ź',
+  ẓ: 'ẓ́',
+}
 
 export const oneToOneMap = {
   j: 'y',
   ʃ: 'ṣ',
   θ: 'þ',
+  x: 'k',
   ʒ: 'ẓ',
   ɑ: 'ô',
   ɒ: 'ô',
@@ -13,12 +39,22 @@ export const oneToOneMap = {
   i: 'e',
   ʊ: 'ů',
   ʌ: 'û',
+  ɜ: 'ə',
 }
 
 export const digraphMap = {
   dʒ: 'j',
   hw: 'w',
   tʃ: 'ṭ',
+  aɪ: 'i',
+  aʊ: 'å',
+  eɪ: 'a',
+  oʊ: 'o',
+  ɒ̃: 'ô',
+  æ̃: 'ô',
+  ɔɪ: 'ø',
+  ɔr: 'o',
+  ɔ: 'a',
 }
 
 export const unchangedChars = [
@@ -44,9 +80,7 @@ export const unchangedChars = [
   'z',
 ]
 
-export const passThroughChars = ['x']
+// TODO: check for others in eventual API-used IPA set
+export const disallowedIpaChars = ['ː', 'ˈ', 'ˌ', '.', 'ʔ']
 
-//TODO: check for others in eventual API-used IPA set
-export const disallowedIpaChars = ['ː', 'ˈ', '.', 'ʔ']
-
-export const ipaChars = 'æɑɒðəɛɜɪŋɔʃʊʌxʒʔθɹː.ˈ'
+export const ipaChars = 'æɑɒðəɛɜɪŋɔʃʊʌxʒʔθɹʔː.ˈˌ'
