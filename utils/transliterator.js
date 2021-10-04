@@ -38,7 +38,9 @@ const handleNonSchwaReplacements = (currentChar, currentIndex, array) => {
   // check if following char completes a valid non-schwa digraph
   if (foundDigraph) {
     mappedChar = foundDigraph.output
-    array.splice(followingChar, 1) /* remove next char in array */
+    if (!foundDigraph.retainSecond) {
+      array.splice(followingChar, 1) /* remove next char in array */
+    }
   } else {
     // if not non-schwa digraph, perform 1:1 replacement
     mappedChar = straightReplacementMap[currentChar]

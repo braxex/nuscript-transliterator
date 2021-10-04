@@ -34,7 +34,7 @@ export const straightReplacementMap = {
   ɪ: 'î',
   i: 'e',
   j: 'y',
-  ɔ: 'a',
+  ɔ: 'ô',
   ʃ: 'ṣ',
   θ: 'þ',
   ʊ: 'ů',
@@ -97,6 +97,7 @@ export const digraphMap = {
     },
     {
       second: 'r',
+      retainSecond: true,
       output: 'o',
     },
   ],

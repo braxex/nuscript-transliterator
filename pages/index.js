@@ -12,8 +12,8 @@ const FormInput = ({ title, label, source }) => {
 
   const handleSubmit = async e => {
     e.preventDefault()
-    const test = await transliterator(fieldValue, source)
-    setResponse(test)
+    const transliteratedString = await transliterator(fieldValue, source)
+    setResponse(transliteratedString)
   }
 
   return (
