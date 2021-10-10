@@ -16,7 +16,7 @@ export default function MyApp(props) {
   return (
     <>
       <Head>
-        <title>Nuskript Transliterator</title>
+        <title>Nuskrîpt Transliterator</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <CssBaseline />

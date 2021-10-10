@@ -1,27 +1,19 @@
+import fetchWordData from './wordsApi'
 import {
+  allowedIpaChars,
+  digraphReplacementMap,
   disallowedIpaChars,
-  ipaChars,
-  digraphMap,
-  straightReplacementMap,
   schwaReplacementMap,
+  straightReplacementMap,
 } from './sourceTargetMaps'
 
 // remove disallowed characters and lowercase prior to api call
-const formatSourceString = sourceString => {
-  const regex = new RegExp(`[^${ipaChars}\\w]|[\\d]`, 'gi')
+const formatSourceString = (sourceString, source) => {
+  const regex =
+    source === 'eng'
+      ? new RegExp(`[^\\w]|[\\d]`, 'gi')
+      : new RegExp(`[^${allowedIpaChars}\\w]|[\\d]`, 'gi')
   return sourceString.replace(regex, '').toLowerCase()
-}
-
-const fetchIpa = () => {
-  let response = ''
-  try {
-    // make ipa call
-    // TODO: if word not found
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error)
-  }
-  return response
 }
 
 // remove disallowed ipa characters prior to transliteration
@@ -32,7 +24,7 @@ const removeDisallowedCharacters = responseArray => {
 const handleNonSchwaReplacements = (currentChar, currentIndex, array) => {
   const followingChar = array[currentIndex + 1]
   // check if current char potentially begins a valid non-schwa digraph
-  const leadCharDigraphOptions = digraphMap[currentChar] || []
+  const leadCharDigraphOptions = digraphReplacementMap[currentChar] || []
   const foundDigraph = leadCharDigraphOptions.find(el => el.second === followingChar)
   let mappedChar = null
   // check if following char completes a valid non-schwa digraph
@@ -64,31 +56,40 @@ const handleSchwaReplacements = (currentChar, currentIndex, array) => {
   return mappedChar || currentChar
 }
 
-const transliterator = async (inputString, source) => {
-  const formattedInputString = formatSourceString(inputString)
-  let responseString
-
-  if (source === 'eng') {
-    // await fetchIpa()
-    // sourceText = response
-    // responseString = 'api response string'
-  } else {
-    responseString = formattedInputString
-  }
-
-  const formattedResponseArray = removeDisallowedCharacters(responseString.split(''))
-
+const handleIpa = ipaString => {
+  const formattedArray = removeDisallowedCharacters(ipaString.split(''))
   // handle digraph and 1:1 char replacements
-  const preSchwaArray = formattedResponseArray
+  const preSchwaArray = formattedArray
     .map(handleNonSchwaReplacements)
     .filter(i => typeof i !== 'undefined')
-
   // handle schwa replacements
   const finalArray = preSchwaArray
     .map(handleSchwaReplacements)
     .filter(i => typeof i !== 'undefined')
-
   return finalArray.join('')
+}
+
+const transliterator = async (inputString, source) => {
+  const formattedInputString = formatSourceString(inputString, source)
+  let transliteratorResponse
+
+  // handle english transliteration
+  if (source === 'eng') {
+    const apiResponse = await fetchWordData(formattedInputString)
+    if (apiResponse.message || !apiResponse.pronunciation) {
+      transliteratorResponse = apiResponse
+    } else {
+      apiResponse.nuskript = handleIpa(
+        apiResponse.pronunciation
+          ? apiResponse.pronunciation.all || apiResponse.pronunciation
+          : null,
+      )
+      transliteratorResponse = apiResponse
+    }
+  } else {
+    transliteratorResponse = { nuskript: handleIpa(formattedInputString) }
+  }
+  return { success: true, ...transliteratorResponse }
 }
 
 export default transliterator

@@ -1,3 +1,26 @@
+export const allowedIpaChars = 'æɑɒðəɛɜɪŋɔʃʊʌxʒʔθɹʔː.ˈˌ'
+
+export const disallowedIpaChars = ['ː', 'ˈ', "'", 'ˌ', ',', '.', 'ʔ']
+
+export const straightReplacementMap = {
+  ɑ: 'ô',
+  ɒ: 'ô',
+  æ: 'â',
+  ɛ: 'ê',
+  ɜ: 'ə',
+  ɪ: 'î',
+  i: 'e',
+  j: 'y',
+  ɔ: 'ô',
+  ʃ: 'ṣ',
+  ʧ: 'ṭ',
+  θ: 'þ',
+  ʊ: 'ů',
+  ʌ: 'û',
+  x: 'k',
+  ʒ: 'ẓ',
+}
+
 export const schwaReplacementMap = {
   b: 'b́',
   d: 'd́',
@@ -25,25 +48,7 @@ export const schwaReplacementMap = {
   ẓ: 'ẓ́',
 }
 
-export const straightReplacementMap = {
-  ɑ: 'ô',
-  ɒ: 'ô',
-  æ: 'â',
-  ɛ: 'ê',
-  ɜ: 'ə',
-  ɪ: 'î',
-  i: 'e',
-  j: 'y',
-  ɔ: 'ô',
-  ʃ: 'ṣ',
-  θ: 'þ',
-  ʊ: 'ů',
-  ʌ: 'û',
-  x: 'k',
-  ʒ: 'ẓ',
-}
-
-export const digraphMap = {
+export const digraphReplacementMap = {
   a: [
     {
       second: 'ɪ',
@@ -108,31 +113,3 @@ export const digraphMap = {
     },
   ],
 }
-
-export const unchangedChars = [
-  'b',
-  'd',
-  'f',
-  'g',
-  'ð',
-  'g',
-  'h',
-  'k',
-  'l',
-  'm',
-  'n',
-  'ŋ',
-  'p',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'z',
-]
-
-// TODO: check for others in eventual API-used IPA set
-export const disallowedIpaChars = ['ː', 'ˈ', 'ˌ', '.', 'ʔ']
-
-export const ipaChars = 'æɑɒðəɛɜɪŋɔʃʊʌxʒʔθɹʔː.ˈˌ'
