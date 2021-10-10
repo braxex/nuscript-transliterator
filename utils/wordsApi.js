@@ -2,11 +2,11 @@ const fetchWordData = async searchString => {
   let resultData = null
   try {
     const response = await fetch(
-      `https://${process.env.NEXT_PUBLIC_API_KEY}/words/${searchString}`,
+      `https://${process.env.NEXT_PUBLIC_API_HOST}/words/${searchString}`,
       {
         method: 'GET',
         headers: {
-          'x-rapidapi-host': process.env.NEXT_PUBLIC_API_KEY,
+          'x-rapidapi-host': process.env.NEXT_PUBLIC_API_HOST,
           'x-rapidapi-key': process.env.NEXT_PUBLIC_API_KEY,
         },
       },
