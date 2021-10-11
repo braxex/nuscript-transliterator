@@ -1,4 +1,4 @@
-const fetchWordData = async searchString => {
+export default async function fetchWordData(searchString) {
   let resultData = null
   try {
     const response = await fetch(
@@ -19,5 +19,3 @@ const fetchWordData = async searchString => {
   }
   return resultData
 }
-
-export default fetchWordData
