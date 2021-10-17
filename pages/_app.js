@@ -28,13 +28,18 @@ const App = props => {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Box>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}>
           <Header />
           <Box sx={{ display: 'flex', justifyContent: 'center', maxWidth: 1140, minWidth: 800 }}>
             <Box
               sx={{
                 display: 'flex',
-                flexFlow: 'column',
+                flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
