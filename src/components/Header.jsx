@@ -54,15 +54,9 @@ export default function Header() {
                   display: 'flex',
                   alignItems: 'center',
                   marginBottom: '3px',
+                  cursor: 'pointer',
                 }}>
-                <Image
-                  src={logo}
-                  alt="logo"
-                  width={50}
-                  height={40}
-                  layout="fixed"
-                  style={{ cursor: 'pointer' }}
-                />
+                <Image src={logo} alt="logo" width={50} height={40} layout="fixed" />
               </a>
             </LinkNext>
             <HeaderLink href="/english" text="Convert English" />

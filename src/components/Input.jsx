@@ -4,15 +4,13 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
-// utils
-import transliterator from '../utils/transliterator'
 
-export default function Input({ label, source, setResponse }) {
+export default function Input({ label, handler, setResponse }) {
   const [fieldValue, setFieldValue] = useState('')
 
   const handleSubmit = async e => {
     e.preventDefault()
-    setResponse(await transliterator(fieldValue, source))
+    setResponse(await handler(fieldValue))
   }
 
   return (

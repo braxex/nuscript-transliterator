@@ -1,7 +1,3 @@
-export const allowedIpaChars = 'æɑɒðəɛɜɪŋɔʃʊʌxʒʔθɹʔː.ˈˌ'
-
-export const disallowedIpaChars = ['ː', 'ˈ', "'", 'ˌ', ',', '.', 'ʔ']
-
 export const straightReplacementMap = {
   ɑ: 'ô',
   ɒ: 'ô',

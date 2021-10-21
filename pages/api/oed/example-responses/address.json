@@ -1,0 +1,169 @@
+{
+  "metadata": {
+    "operation": "retrieve",
+    "provider": "Oxford University Press",
+    "schema": "RetrieveEntry"
+  },
+  "query": "address",
+  "results": [
+    {
+      "id": "address",
+      "language": "en-us",
+      "lexicalEntries": [
+        {
+          "entries": [
+            {
+              "etymologies": [
+                "Middle English (as a verb in the senses ‘set upright’ and ‘guide, direct’, hence ‘write directions for delivery on’ and ‘direct spoken words to’): from Old French, based on Latin ad- ‘towards’ + directus (see direct). The noun is of mid 16th-century origin in the sense ‘act of approaching or speaking to someone’"
+              ],
+              "pronunciations": [
+                {
+                  "dialects": ["American English"],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "əˈdres"
+                },
+                {
+                  "audioFile": "https://audio.oxforddictionaries.com/en/mp3/address_us_2.mp3",
+                  "dialects": ["American English"],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "əˈdrɛs"
+                },
+                {
+                  "dialects": ["American English"],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "ˈaˌdres"
+                },
+                {
+                  "audioFile": "https://audio.oxforddictionaries.com/en/mp3/address_us_1_rr.mp3",
+                  "dialects": ["American English"],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "ˈæˌdrɛs"
+                }
+              ],
+              "senses": [
+                {
+                  "definitions": [
+                    "the particulars of the place where someone lives or an organization is situated"
+                  ],
+                  "id": "m_en_gbus0009480.010",
+                  "subsenses": [
+                    {
+                      "definitions": [
+                        "the place where someone lives or an organization is situated"
+                      ],
+                      "id": "m_en_gbus0009480.013"
+                    },
+                    {
+                      "definitions": [
+                        "a string of characters that identifies a destination for email messages or the location of a website."
+                      ],
+                      "id": "m_en_gbus0009480.014"
+                    },
+                    {
+                      "definitions": [
+                        "a binary number that identifies a particular location in a data storage system or computer memory"
+                      ],
+                      "id": "m_en_gbus0009480.015"
+                    }
+                  ]
+                },
+                {
+                  "definitions": ["a formal speech delivered to an audience"],
+                  "id": "m_en_gbus0009480.017",
+                  "subsenses": [
+                    {
+                      "definitions": ["a person's manner of speaking to someone else"],
+                      "id": "m_en_gbus0009480.018"
+                    },
+                    {
+                      "definitions": ["courteous or amorous approaches to someone"],
+                      "id": "m_en_gbus0009480.020"
+                    }
+                  ]
+                },
+                {
+                  "definitions": ["skill, dexterity, or readiness"],
+                  "id": "m_en_gbus0009480.023"
+                }
+              ]
+            }
+          ],
+          "language": "en-us",
+          "lexicalCategory": {
+            "id": "noun",
+            "text": "Noun"
+          },
+          "text": "address"
+        },
+        {
+          "entries": [
+            {
+              "pronunciations": [
+                {
+                  "dialects": ["American English"],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "əˈdres"
+                },
+                {
+                  "audioFile": "https://audio.oxforddictionaries.com/en/mp3/address_us_2.mp3",
+                  "dialects": ["American English"],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "əˈdrɛs"
+                },
+                {
+                  "dialects": ["American English"],
+                  "phoneticNotation": "respell",
+                  "phoneticSpelling": "ˈaˌdres"
+                },
+                {
+                  "audioFile": "https://audio.oxforddictionaries.com/en/mp3/address_us_1_rr.mp3",
+                  "dialects": ["American English"],
+                  "phoneticNotation": "IPA",
+                  "phoneticSpelling": "ˈæˌdrɛs"
+                }
+              ],
+              "senses": [
+                {
+                  "definitions": [
+                    "write the name and address of the intended recipient on (an envelope, letter, or package)"
+                  ],
+                  "id": "m_en_gbus0009480.026"
+                },
+                {
+                  "definitions": ["speak to (a person or an assembly), typically in a formal way"],
+                  "id": "m_en_gbus0009480.033",
+                  "subsenses": [
+                    {
+                      "definitions": ["name someone in a specified way when talking or writing"],
+                      "id": "m_en_gbus0009480.034"
+                    },
+                    {
+                      "definitions": ["say or write remarks or a protest to (someone)"],
+                      "id": "m_en_gbus0009480.035"
+                    }
+                  ]
+                },
+                {
+                  "definitions": ["think about and begin to deal with (an issue or problem)"],
+                  "id": "m_en_gbus0009480.037"
+                },
+                {
+                  "definitions": ["take up one's stance and prepare to hit (the ball)"],
+                  "id": "m_en_gbus0009480.039"
+                }
+              ]
+            }
+          ],
+          "language": "en-us",
+          "lexicalCategory": {
+            "id": "verb",
+            "text": "Verb"
+          },
+          "text": "address"
+        }
+      ],
+      "type": "headword",
+      "word": "address"
+    }
+  ]
+}

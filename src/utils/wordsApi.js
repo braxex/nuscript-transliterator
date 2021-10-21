@@ -13,9 +13,9 @@ export default async function fetchWordData(searchString) {
     )
     resultData = await response.json()
   } catch (err) {
-    // swallow error
     // eslint-disable-next-line no-console
     console.log(err)
   }
+  console.log('words api response:\n', resultData)
   return resultData
 }

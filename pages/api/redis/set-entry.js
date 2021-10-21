@@ -1,6 +1,6 @@
-import redis from '../../lib/redis'
+import redis from '../../../lib/redis'
 
-export default async function setWord(req, res) {
+export default async function setEntry(req, res) {
   const payload = req.body
   if (!payload) {
     res.status(400).json({
