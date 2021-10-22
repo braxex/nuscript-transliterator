@@ -5,7 +5,7 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 
-export default function Input({ label, handler, setResponse }) {
+export default function Input({ label, handler, setResponse, longform }) {
   const [fieldValue, setFieldValue] = useState('')
 
   const handleSubmit = async e => {
@@ -24,13 +24,20 @@ export default function Input({ label, handler, setResponse }) {
         justifyContent: 'center',
         width: '100%',
       }}>
-      <Stack direction="row" alignItems="center" spacing={2} sx={{ maxWidth: 1140 }}>
+      <Stack
+        direction={longform ? 'column' : 'row'}
+        alignItems="center"
+        justifyContent="center"
+        spacing={2}
+        sx={{ maxWidth: 1140 }}>
         <TextField
           label={label}
           variant="filled"
           value={fieldValue}
           onInput={e => setFieldValue(e.target.value)}
-          sx={{ width: 250 }}
+          sx={{ width: longform ? 500 : 250 }}
+          multiline={longform}
+          rows={longform ? 6 : 1}
         />
         <Button variant="contained" type="submit" sx={{ width: 175, height: '100%' }}>
           Transliterate

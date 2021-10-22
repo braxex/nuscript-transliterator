@@ -51,6 +51,7 @@ const engHandler = async input => {
     cachedTransliteration.success = true
     output = cachedTransliteration
   }
+  console.log('output', output)
   return output
 }
 
