@@ -32,7 +32,6 @@ const parHandler = async input => {
   const inputArray = input.trim().split(' ')
   const transliteratedArray = await Promise.all(inputArray.map(x => transliterateItem(x)))
   const output = { success: true, nuskript: transliteratedArray.join(' '), word: input }
-  console.log('output', output)
   return output
 }
 
