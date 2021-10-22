@@ -1,5 +1,6 @@
 import fetchWordData from './wordsApi'
 import { ipaHandler } from './ipa-utils'
+import { getRedisEntry, setRedisEntry } from './redis-utils'
 
 const sanitizationRegex = new RegExp(`[^\\w]|[\\d]`, 'gi')
 
@@ -7,17 +8,15 @@ const sanitizeEnglish = string => {
   return string.replace(sanitizationRegex, '').toLowerCase()
 }
 
-// TODO: MAKE THIS CHECK REAL
-const checkCache = async () => false
+const checkCache = async entry => getRedisEntry(entry)
 
 const engHandler = async input => {
   let output
   const sanitizedInput = sanitizeEnglish(input)
 
-  // if word does not exist in cache, call api before transliteration
-  // const wordExistsInCache = checkCache(sanitizedInput)
-  const wordExistsInCache = false
-  if (!wordExistsInCache) {
+  // check cache for existing transliteration
+  const existingCacheEntry = await checkCache(sanitizedInput)
+  if (!existingCacheEntry) {
     const apiResponse = await fetchWordData(sanitizedInput)
     // if there's an API error or the word is not found
     if (apiResponse.message || !apiResponse.pronunciation) {
@@ -31,12 +30,16 @@ const engHandler = async input => {
           : null,
       )
       apiResponse.nuskript = transliteration
+      // cache api response and transliteration
+      await setRedisEntry(sanitizedInput, JSON.stringify(apiResponse))
       apiResponse.success = true
       output = apiResponse
-      // TODO: SET API RESPONSE AND TRANSLITERATION IN CACHE
     }
-  } else {
-    // TODO: SKIP API CALL & USE CACHED TRANSLITERATION INSTEAD
+  } // use prior existing transliteration
+  else {
+    const cachedTransliteration = JSON.parse(existingCacheEntry)
+    cachedTransliteration.success = true
+    output = cachedTransliteration
   }
   return output
 }

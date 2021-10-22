@@ -16,6 +16,5 @@ export default async function fetchWordData(searchString) {
     // eslint-disable-next-line no-console
     console.log(err)
   }
-  console.log('words api response:\n', resultData)
   return resultData
 }
