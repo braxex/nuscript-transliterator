@@ -12,7 +12,7 @@ const sanitizeIpa = string => {
 }
 
 const removeDisallowedCharacters = array => {
-  return array.filter(i => !['ː', 'ˈ', "'", 'ˌ', ',', '.', 'ʔ'].includes(i))
+  return array.filter(i => !['ː', 'ˈ', "'", 'ˌ', ',', '.', 'ʔ', '_'].includes(i))
 }
 
 const mapNonSchwaReplacements = (currentChar, currentIndex, array) => {

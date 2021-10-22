@@ -14,7 +14,7 @@ export default function EnglishTransliterator() {
       <Typography variant="h3" align="center" sx={{ m: '2rem', fontWeight: 'bold' }}>
         English to Nuskrîpt
       </Typography>
-      <Input label="English" handler={parHandler} setResponse={setResponse} />
+      <Input label="English" handler={engHandler} setResponse={setResponse} longform={true} />
       <Box sx={{ m: '2rem', mx: '6rem' }}>
         {!!response && !response.success && (
           <Typography variant="h5" align="center" sx={{ fontWeight: 'bold' }}>

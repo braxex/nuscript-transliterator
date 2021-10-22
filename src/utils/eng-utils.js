@@ -2,7 +2,7 @@ import fetchWordData from './wordsApi'
 import { ipaHandler } from './ipa-utils'
 import { getRedisEntry, setRedisEntry } from './redis-utils'
 
-const allowCacheFetching = true
+const allowCacheFetching = false
 const allowCacheSetting = true
 
 const sanitizationRegex = new RegExp(`[^\\w]|[\\d]`, 'gi')
@@ -19,10 +19,15 @@ const engHandler = async input => {
 
   // check cache for existing transliteration
   const existingCacheEntry = await checkCache(sanitizedInput)
-  if (allowCacheFetching && !existingCacheEntry) {
+  if (!existingCacheEntry) {
     const apiResponse = await fetchWordData(sanitizedInput)
     // if there's an error or the word is not found
     if (apiResponse.message || !apiResponse.pronunciation) {
+      apiResponse.nuskript = <span>error</span>
+      output = apiResponse
+    } // if the api messed up and didn't provide ipa
+    else if (Object.keys(apiResponse.pronunciation).length === 0) {
+      apiResponse.nuskript = <span>error</span>
       output = apiResponse
     }
     // if everything's ok
