@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography'
 import Input from '../src/components/Input'
 // handler
 import engHandler from '../src/utils/eng-utils'
+import parHandler from '../src/utils/par-utils'
 
 export default function EnglishTransliterator() {
   const [response, setResponse] = useState(null)
@@ -13,7 +14,7 @@ export default function EnglishTransliterator() {
       <Typography variant="h3" align="center" sx={{ m: '2rem', fontWeight: 'bold' }}>
         English to Nuskrîpt
       </Typography>
-      <Input label="English" handler={engHandler} setResponse={setResponse} />
+      <Input label="English" handler={parHandler} setResponse={setResponse} />
       <Box sx={{ m: '2rem', mx: '6rem' }}>
         {!!response && !response.success && (
           <Typography variant="h5" align="center" sx={{ fontWeight: 'bold' }}>

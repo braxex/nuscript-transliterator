@@ -4,6 +4,7 @@ export const straightReplacementMap = {
   æ: 'â',
   ɛ: 'ê',
   ɜ: 'ə',
+  ɡ: 'g',
   ɪ: 'î',
   i: 'e',
   j: 'y',

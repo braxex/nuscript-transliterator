@@ -4,7 +4,7 @@ import {
   straightReplacementMap,
 } from './replacementMaps'
 
-const allowedIpaChars = 'æɑɒðəɛɜɪŋɔʃʊʌxʒʔθɹʧʔː.ˈˌ'
+const allowedIpaChars = 'æɑɒðəɛɜɪŋɔʃʊʌxʒʔθɹʧʔɡː.ˈˌ'
 const sanitizationRegex = new RegExp(`[^${allowedIpaChars}\\w]|[\\d]`, 'gi')
 
 const sanitizeIpa = string => {
