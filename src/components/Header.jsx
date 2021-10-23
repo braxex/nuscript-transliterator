@@ -5,7 +5,6 @@ import { useTheme } from '@mui/material/styles'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import LinkMui from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Toolbar from '@mui/material/Toolbar'
 // images
@@ -13,7 +12,7 @@ import logo from '../assets/images/ns-logo.png'
 
 const HeaderLink = ({ href, text }) => {
   return (
-    <LinkMui component={LinkNext} href={href} passHref underline="none">
+    <LinkNext href={href} passHref>
       <Button
         variant="text"
         sx={{
@@ -29,7 +28,7 @@ const HeaderLink = ({ href, text }) => {
         }}>
         {text}
       </Button>
-    </LinkMui>
+    </LinkNext>
   )
 }
 
