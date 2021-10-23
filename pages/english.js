@@ -11,7 +11,7 @@ import engHandler from '../src/utils/eng-utils'
 import parHandler from '../src/utils/par-utils'
 
 export default function EnglishTransliterator() {
-  const [variant, setVariant] = useState('longform')
+  const [variant, setVariant] = useState('single')
   const [fieldValue, setFieldValue] = useState('')
   const [response, setResponse] = useState(null)
 

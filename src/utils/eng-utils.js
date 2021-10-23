@@ -1,4 +1,4 @@
-import fetchWordData from './wordsApi'
+import fetchWordData from './api-utils'
 import { ipaHandler } from './ipa-utils'
 import { getRedisEntry, setRedisEntry } from './redis-utils'
 
