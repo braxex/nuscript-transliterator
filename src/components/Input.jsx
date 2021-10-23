@@ -1,13 +1,17 @@
-import { useState } from 'react'
 // components
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 
-export default function Input({ label, handler, setResponse, longform }) {
-  const [fieldValue, setFieldValue] = useState('')
-
+export default function Input({
+  fieldValue,
+  setFieldValue,
+  handler,
+  setResponse,
+  label,
+  longform,
+}) {
   const handleSubmit = async e => {
     e.preventDefault()
     setResponse(await handler(fieldValue))
@@ -39,7 +43,10 @@ export default function Input({ label, handler, setResponse, longform }) {
           multiline={longform}
           rows={longform ? 6 : 1}
         />
-        <Button variant="contained" type="submit" sx={{ width: 175, height: '100%' }}>
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{ width: 175, height: '100%', minHeight: 56 }}>
           Transliterate
         </Button>
       </Stack>

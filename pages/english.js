@@ -6,16 +6,18 @@ import ToggleButton from '@mui/material/ToggleButton'
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup'
 import Typography from '@mui/material/Typography'
 import Input from '../src/components/Input'
-// handler
+// handlers
 import engHandler from '../src/utils/eng-utils'
 import parHandler from '../src/utils/par-utils'
 
 export default function EnglishTransliterator() {
-  const [response, setResponse] = useState(null)
   const [variant, setVariant] = useState('longform')
+  const [fieldValue, setFieldValue] = useState('')
+  const [response, setResponse] = useState(null)
 
-  const handleVariant = (e, newVariant) => {
+  const handleVariantChange = (e, newVariant) => {
     setVariant(newVariant)
+    setFieldValue('')
     setResponse(null)
   }
 
@@ -29,7 +31,7 @@ export default function EnglishTransliterator() {
         justifyContent="center"
         spacing={2}
         sx={{ maxWidth: 1140, marginBottom: '2rem' }}>
-        <ToggleButtonGroup value={variant} exclusive onChange={handleVariant}>
+        <ToggleButtonGroup value={variant} exclusive onChange={handleVariantChange}>
           <ToggleButton sx={{ width: 150 }} value="single">
             Single
           </ToggleButton>
@@ -43,6 +45,8 @@ export default function EnglishTransliterator() {
         handler={variant === 'longform' ? parHandler : engHandler}
         setResponse={setResponse}
         longform={variant === 'longform'}
+        fieldValue={fieldValue}
+        setFieldValue={setFieldValue}
       />
       <Box sx={{ m: '2rem', mx: '6rem' }}>
         {!!response && !response.success && (
