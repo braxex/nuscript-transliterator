@@ -33,7 +33,6 @@ const transliterateItem = async item => {
   }
   // if item does not contain a non-word character, transliterate
   const transliteratedItem = await engHandler(item)
-  console.log(transliteratedItem)
   return transliteratedItem
 }
 
