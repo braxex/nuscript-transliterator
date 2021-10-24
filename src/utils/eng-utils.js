@@ -27,13 +27,18 @@ const engHandler = async input => {
   } else {
     // query words api
     const apiResponse = await fetchWordData(sanitizedInput)
+    // if the word returned is an inexact match
+    if (apiResponse.word && apiResponse.word !== sanitizedInput) {
+      apiResponse.inexact = true
+    }
     // if there's an error or the word is not found
-    if (apiResponse.message || !apiResponse.pronunciation) {
-      apiResponse.nuskript = <span>error</span>
-      output = apiResponse
-    } // if the api messed up and didn't provide ipa
-    else if (Object.keys(apiResponse.pronunciation).length === 0) {
-      apiResponse.nuskript = <span>error</span>
+    if (
+      apiResponse.message ||
+      !apiResponse.pronunciation ||
+      Object.keys(apiResponse.pronunciation).length === 0
+    ) {
+      apiResponse.nuskript = sanitizedInput
+      apiResponse.invalid = true
       output = apiResponse
     }
     // if everything's ok

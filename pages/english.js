@@ -56,24 +56,41 @@ export default function EnglishTransliterator() {
         )}
         {!!response && response.success && (
           <>
-            <Typography
-              variant="h5"
-              align="center"
-              gutterBottom
-              sx={{ fontWeight: 'bold', marginTop: '2rem' }}>
-              Nuskrîpt:{' '}
-              {response.nuskript ||
-                'Sorry, word pronunciation not available. Transliterate manually or try again.'}
-            </Typography>
-            {response.pronunciation && (
-              <Typography variant="h6" align="center" gutterBottom>
-                IPA: {response.pronunciation.all || response.pronunciation}
-              </Typography>
-            )}
-            {response.word && (
-              <Typography variant="h6" align="center" gutterBottom>
-                Original: {response.word}
-              </Typography>
+            {response.variant === 'longform' ? (
+              <Typography
+                variant="h5"
+                align="center"
+                gutterBottom
+                sx={{
+                  fontWeight: 'bold',
+                  marginTop: '2rem',
+                  '& > .inexact': { color: 'goldenrod' },
+                  '& > .invalid': { color: 'firebrick' },
+                }}
+                dangerouslySetInnerHTML={{ __html: response.nuskript }}
+              />
+            ) : (
+              <>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  gutterBottom
+                  sx={{ fontWeight: 'bold', marginTop: '2rem' }}>
+                  Nuskrîpt:{' '}
+                  {response.nuskript ||
+                    'Sorry, word pronunciation not available. Transliterate manually or try again.'}
+                </Typography>
+                {response.pronunciation && (
+                  <Typography variant="h6" align="center" gutterBottom>
+                    IPA: {response.pronunciation.all || response.pronunciation}
+                  </Typography>
+                )}
+                {response.word && (
+                  <Typography variant="h6" align="center" gutterBottom>
+                    Original: {response.word}
+                  </Typography>
+                )}
+              </>
             )}
           </>
         )}

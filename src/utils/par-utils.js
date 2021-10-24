@@ -14,24 +14,45 @@ const transliterateItem = async item => {
             return x
           }
           // if item does not contain a non-word character, transliterate
-          const transliteratedItem = await engHandler(item)
-          return transliteratedItem.nuskript
+          const transliteratedRootItem = await engHandler(item)
+          return transliteratedRootItem
         }),
       )
-      const transliteratedItem = transliteratedSplitItem.join('')
-      return transliteratedItem
+      // rejoin transliterated root item with the accompanying punctuation,
+      // maintaining root-related metadata
+      const rootItem = transliteratedSplitItem.filter(x => typeof x === 'object')[0]
+      // get root item transliteration and replace the current split item array with it
+      const rootItemTransliteration = rootItem.nuskript
+      const rootItemIndex = transliteratedSplitItem.findIndex(x => typeof x === 'object')
+      transliteratedSplitItem[rootItemIndex] = rootItemTransliteration
+      // replace returned nuskript string with transliterated split item
+      rootItem.nuskript = transliteratedSplitItem.join('')
+      return rootItem
     }
     return item
   }
   // if item does not contain a non-word character, transliterate
   const transliteratedItem = await engHandler(item)
-  return transliteratedItem.nuskript
+  console.log(transliteratedItem)
+  return transliteratedItem
 }
 
 const parHandler = async input => {
   const inputArray = input.trim().split(' ')
   const transliteratedArray = await Promise.all(inputArray.map(x => transliterateItem(x)))
-  const output = { success: true, nuskript: transliteratedArray.join(' '), word: input }
+  const array = transliteratedArray.map((x, index) => {
+    let output
+    if (x.invalid) {
+      output = `<span class="invalid">${inputArray[index]}</span>`
+    } else if (x.inexact) {
+      output = `<span class="inexact">${x.nuskript}</span>`
+    } else {
+      output = `<span>${x.nuskript}</span>`
+    }
+    return output
+  })
+
+  const output = { success: true, variant: 'longform', nuskript: array.join(' ') }
   return output
 }
 
