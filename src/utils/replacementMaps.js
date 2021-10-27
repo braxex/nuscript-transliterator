@@ -8,13 +8,14 @@ export const straightReplacementMap = {
   ɪ: 'î',
   i: 'e',
   j: 'y',
+  k: 'c',
   ɔ: 'ô',
   ʃ: 'ṣ',
-  ʧ: 'ṭ',
+  ʧ: 'c̣',
   θ: 'þ',
   ʊ: 'ů',
   ʌ: 'û',
-  x: 'k',
+  x: 'c',
   ʒ: 'ẓ',
 }
 
@@ -25,7 +26,7 @@ export const schwaReplacementMap = {
   g: 'ǵ',
   h: 'h́',
   j: 'ȷ́',
-  k: 'ḱ',
+  c: 'ć̣',
   l: 'ĺ',
   m: 'ḿ',
   n: 'ń',
@@ -37,7 +38,7 @@ export const schwaReplacementMap = {
   þ: 'þ́',
   ð: 'ð́',
   t: 't́',
-  ṭ: 'ṭ́',
+  c̣: 'ć̣',
   v: 'v́',
   w: 'ẃ',
   y: 'ý',
@@ -106,7 +107,7 @@ export const digraphReplacementMap = {
   t: [
     {
       second: 'ʃ',
-      output: 'ṭ',
+      output: 'c̣',
     },
   ],
 }

@@ -41,7 +41,7 @@ const mapSchwaReplacements = (currentChar, currentIndex, array) => {
   if (currentChar === 'ə') {
     // if it is the last character, return apostrophe
     if (currentIndex === array.length - 1) {
-      mappedChar = "'"
+      mappedChar = '’'
     } else if (schwaReplacementMap[followingChar]) {
       mappedChar = schwaReplacementMap[followingChar]
       array.splice(followingChar, 1) /* remove next char in array */
