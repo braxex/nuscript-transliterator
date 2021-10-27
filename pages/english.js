@@ -24,7 +24,7 @@ export default function EnglishTransliterator() {
   return (
     <>
       <Typography variant="h3" align="center" sx={{ m: '2rem', fontWeight: 'bold' }}>
-        English to Nuskrîpt
+        English to Nuscrîpt
       </Typography>
       <Stack
         direction="row"
@@ -76,7 +76,7 @@ export default function EnglishTransliterator() {
                   align="center"
                   gutterBottom
                   sx={{ fontWeight: 'bold', marginTop: '2rem' }}>
-                  Nuskrîpt:{' '}
+                  Nuscrîpt:{' '}
                   {response.nuscript ||
                     'Sorry, word pronunciation not available. Transliterate manually or try again.'}
                 </Typography>

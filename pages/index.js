@@ -5,10 +5,10 @@ export default function Homepage() {
   return (
     <>
       <Typography variant="h3" align="center" sx={{ m: '2rem', fontWeight: 'bold' }}>
-        Nuskrîpt Transliterator
+        Nuscrîpt Transliterator
       </Typography>
       <Typography variant="body1" align="center">
-        Welcome to the Nuskrîpt Transliterator!
+        Welcome to the Nuscrîpt Transliterator!
       </Typography>
       <Typography variant="body1" align="center">
         There will be more information here later.

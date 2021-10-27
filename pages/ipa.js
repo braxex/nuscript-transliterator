@@ -11,13 +11,13 @@ export default function IpaTransliterator() {
   return (
     <>
       <Typography variant="h3" align="center" sx={{ m: '2rem', fontWeight: 'bold' }}>
-        IPA to Nuskrîpt
+        IPA to Nuscrîpt
       </Typography>
       <Input label="IPA" handler={ipaHandler} setResponse={setResponse} />
       <Box sx={{ m: '2rem', mx: '6rem' }}>
         {response && (
           <Typography variant="h5" align="center" sx={{ fontWeight: 'bold', marginTop: '2rem' }}>
-            Nuskrîpt: {response}
+            Nuscrîpt: {response}
           </Typography>
         )}
       </Box>

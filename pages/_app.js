@@ -19,7 +19,7 @@ const App = props => {
   return (
     <>
       <Head>
-        <title>Nuskrîpt Transliterator</title>
+        <title>Nuscrîpt Transliterator</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="shortcut icon" href="/favicon/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
