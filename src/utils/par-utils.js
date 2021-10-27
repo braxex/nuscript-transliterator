@@ -22,11 +22,11 @@ const transliterateItem = async item => {
       // maintaining root-related metadata
       const rootItem = transliteratedSplitItem.filter(x => typeof x === 'object')[0]
       // get root item transliteration and replace the current split item array with it
-      const rootItemTransliteration = rootItem.nuskript
+      const rootItemTransliteration = rootItem.nuscript
       const rootItemIndex = transliteratedSplitItem.findIndex(x => typeof x === 'object')
       transliteratedSplitItem[rootItemIndex] = rootItemTransliteration
-      // replace returned nuskript string with transliterated split item
-      rootItem.nuskript = transliteratedSplitItem.join('')
+      // replace returned nuscript string with transliterated split item
+      rootItem.nuscript = transliteratedSplitItem.join('')
       return rootItem
     }
     return item
@@ -44,14 +44,14 @@ const parHandler = async input => {
     if (x.invalid) {
       output = `<span class="invalid">${inputArray[index]}</span>`
     } else if (x.inexact) {
-      output = `<span class="inexact">${x.nuskript}</span>`
+      output = `<span class="inexact">${x.nuscript}</span>`
     } else {
-      output = `<span>${x.nuskript}</span>`
+      output = `<span>${x.nuscript}</span>`
     }
     return output
   })
 
-  const output = { success: true, variant: 'longform', nuskript: array.join(' ') }
+  const output = { success: true, variant: 'longform', nuscript: array.join(' ') }
   return output
 }
 

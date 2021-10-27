@@ -67,7 +67,7 @@ export default function EnglishTransliterator() {
                   '& > .inexact': { color: 'goldenrod' },
                   '& > .invalid': { color: 'firebrick' },
                 }}
-                dangerouslySetInnerHTML={{ __html: response.nuskript }}
+                dangerouslySetInnerHTML={{ __html: response.nuscript }}
               />
             ) : (
               <>
@@ -77,7 +77,7 @@ export default function EnglishTransliterator() {
                   gutterBottom
                   sx={{ fontWeight: 'bold', marginTop: '2rem' }}>
                   Nuskrîpt:{' '}
-                  {response.nuskript ||
+                  {response.nuscript ||
                     'Sorry, word pronunciation not available. Transliterate manually or try again.'}
                 </Typography>
                 {response.pronunciation && (

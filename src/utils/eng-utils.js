@@ -37,7 +37,7 @@ const engHandler = async input => {
       !apiResponse.pronunciation ||
       Object.keys(apiResponse.pronunciation).length === 0
     ) {
-      apiResponse.nuskript = sanitizedInput
+      apiResponse.nuscript = sanitizedInput
       apiResponse.invalid = true
       output = apiResponse
     }
@@ -48,7 +48,7 @@ const engHandler = async input => {
           ? apiResponse.pronunciation.all || apiResponse.pronunciation
           : null,
       )
-      apiResponse.nuskript = transliteration
+      apiResponse.nuscript = transliteration
       // cache api response and transliteration
       if (allowCacheSetting) {
         await setRedisEntry(sanitizedInput, JSON.stringify(apiResponse))
