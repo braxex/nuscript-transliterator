@@ -3,16 +3,11 @@ import PropTypes from 'prop-types'
 import Head from 'next/head'
 // theming
 import CssBaseline from '@mui/material/CssBaseline'
-import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
+import theme from '../src/theme'
 // components
 import Box from '@mui/material/Box'
 import Header from '../src/components/Header'
-
-const theme = createTheme({
-  palette: {
-    primary: { main: '#000' },
-  },
-})
 
 const App = props => {
   const { Component, pageProps } = props
@@ -35,17 +30,17 @@ const App = props => {
             alignItems: 'center',
           }}>
           <Header />
-          <Box sx={{ display: 'flex', justifyContent: 'center', maxWidth: 1140, minWidth: 800 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', maxWidth: 1140 }}>
             <Box
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
                 alignItems: 'center',
+                width: '100%',
+                margin: '0 1rem',
               }}>
-              <Box sx={{ maxWidth: 1140, minWidth: 800 }}>
-                <Component {...pageProps} />
-              </Box>
+              <Component {...pageProps} />
             </Box>
           </Box>
         </Box>
