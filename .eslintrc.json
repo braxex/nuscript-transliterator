@@ -17,6 +17,7 @@
     "react/prop-types": "off",
     "react/jsx-props-no-spreading": "off",
     "react/forbid-prop-types": "off",
+    "import/order": "off",
     "jsx-a11y/anchor-is-valid": [
       "error",
       {

@@ -16,7 +16,6 @@ export default function Input({
     e.preventDefault()
     setResponse(await handler(fieldValue))
   }
-
   return (
     <Box
       component="form"
@@ -29,17 +28,17 @@ export default function Input({
         width: '100%',
       }}>
       <Stack
-        direction={longform ? 'column' : 'row'}
+        direction={{ sm: 'column', md: longform ? 'column' : 'row' }}
         alignItems="center"
         justifyContent="center"
         spacing={2}
-        sx={{ maxWidth: 1140 }}>
+        sx={{ width: '100%' }}>
         <TextField
           label={label}
           variant="filled"
           value={fieldValue}
           onInput={e => setFieldValue(e.target.value)}
-          sx={{ width: longform ? 500 : 250 }}
+          sx={{ width: longform ? '100%' : 250 }}
           multiline={longform}
           rows={longform ? 6 : 1}
         />
