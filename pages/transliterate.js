@@ -57,18 +57,39 @@ export default function EnglishTransliterator() {
         {!!response && response.success && (
           <>
             {response.variant === 'longform' ? (
-              <Typography
-                variant="h5"
-                align="center"
-                gutterBottom
-                sx={{
-                  fontWeight: 'bold',
-                  marginTop: '2rem',
-                  '& > .inexact': { color: 'goldenrod' },
-                  '& > .invalid': { color: 'firebrick' },
-                }}
-                dangerouslySetInnerHTML={{ __html: response.nuscript }}
-              />
+              <Box>
+                {response.flags.invalid && (
+                  <Typography variant="h6" gutterBottom sx={{ fontSize: 14 }}>
+                    Your query includes{' '}
+                    <span style={{ color: 'firebrick', fontWeight: 'bold' }}>invalid strings</span>:
+                    words that could not be found in the dictionary. Common causes include typos and
+                    unusual hyphenation.
+                  </Typography>
+                )}
+                {response.flags.inexact && (
+                  <Typography variant="h6" gutterBottom sx={{ fontSize: 14 }}>
+                    Your response includes{' '}
+                    <span style={{ color: 'goldenrod', fontWeight: 'bold' }}>
+                      inexact transliterations
+                    </span>
+                    : words that could not be found in the dictionary, but for which a root word was
+                    available. The root word has been translated instead and manual adjustment is
+                    recommended. Common causes include uncommon verb forms and plurals.
+                  </Typography>
+                )}
+                <Typography
+                  variant="h5"
+                  align="center"
+                  gutterBottom
+                  sx={{
+                    fontWeight: 'bold',
+                    marginTop: '2rem',
+                    '& > .inexact': { color: 'goldenrod' },
+                    '& > .invalid': { color: 'firebrick' },
+                  }}
+                  dangerouslySetInnerHTML={{ __html: response.nuscript }}
+                />
+              </Box>
             ) : (
               <>
                 <Typography

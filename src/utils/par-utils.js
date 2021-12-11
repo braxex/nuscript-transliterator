@@ -39,19 +39,29 @@ const transliterateItem = async item => {
 const parHandler = async input => {
   const inputArray = input.trim().split(' ')
   const transliteratedArray = await Promise.all(inputArray.map(x => transliterateItem(x)))
+  const flags = {
+    inexact: false,
+    invalid: false,
+  }
   const array = transliteratedArray.map((x, index) => {
     let output
     if (x.invalid) {
       output = `<span class="invalid">${inputArray[index]}</span>`
+      flags.invalid = true
     } else if (x.inexact) {
       output = `<span class="inexact">${x.nuscript}</span>`
+      flags.inexact = true
     } else {
       output = `<span>${x.nuscript}</span>`
     }
     return output
   })
-
-  const output = { success: true, variant: 'longform', nuscript: array.join(' ') }
+  const output = {
+    success: true,
+    variant: 'longform',
+    nuscript: array.join(' '),
+    flags,
+  }
   return output
 }
 
