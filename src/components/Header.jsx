@@ -31,27 +31,27 @@ const menuRoutes = [
   },
 ]
 
-const MenuLink = ({ href, text }) => {
-  return (
-    <LinkNext href={href} passHref>
-      <Button
-        variant="text"
-        sx={{
-          margin: 0,
-          borderRadius: 0,
-          borderBottom: '3px solid transparent',
-          fontWeight: 'bold',
-          color: 'white',
-          transition: 'all 0.2s ease',
-          ':hover': {
-            borderBottom: '3px solid white',
-          },
-        }}>
-        {text}
-      </Button>
-    </LinkNext>
-  )
+const styles = {
+  button: {
+    margin: 0,
+    borderRadius: 0,
+    borderBottom: '3px solid transparent',
+    fontWeight: 'bold',
+    color: 'white',
+    transition: 'all 0.2s ease',
+    ':hover': {
+      borderBottom: '3px solid white',
+    },
+  },
 }
+
+const MenuLink = ({ href, text }) => (
+  <LinkNext href={href} passHref>
+    <Button variant="text" sx={{ ...styles.button }}>
+      {text}
+    </Button>
+  </LinkNext>
+)
 
 const DesktopMenu = () => {
   return (

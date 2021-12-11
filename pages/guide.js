@@ -9,7 +9,14 @@ export default function Guide() {
         Guide
       </Typography>
       <Typography variant="body1" align="center">
-        There will be more information here later.
+        <a
+          href="/downloads/beginners-guide-to-nuscript.pdf"
+          alt="download nuscript guide"
+          target="_blank"
+          rel="noopener noreferrer"
+          download>
+          Download the Beginner’s Guide to Nuscript
+        </a>
       </Typography>
     </Box>
   )
