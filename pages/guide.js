@@ -1,5 +1,6 @@
 // components
 import Box from '@mui/material/Box'
+import LinkNext from 'next/link'
 import Typography from '@mui/material/Typography'
 
 export default function Guide() {
@@ -17,6 +18,10 @@ export default function Guide() {
           download>
           Download the Beginner’s Guide to Nuscript
         </a>
+      </Typography>
+      <Typography variant="body1" align="center" sx={{ mt: '2rem' }}>
+        More info will be available later. For now, try out the{' '}
+        <LinkNext href="/transliterate">Transliterator</LinkNext>.
       </Typography>
     </Box>
   )
